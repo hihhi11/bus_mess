@@ -1,0 +1,36 @@
+name: Collect bus 163 samples
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Run collector
+        env:
+          DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
+          BUS_ROUTE_ID: "100100032"
+          BUS_ROUTE_NAME: "163"
+        run: npm run collect
+
+      - name: Commit collected data
+        run: |
+          git config user.name "bus-collector-bot"
+          git config user.email "actions@github.com"
+          git add data/samples.jsonl
+          git diff --cached --quiet && echo "no changes" || git commit -m "chore: append 163 sample $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

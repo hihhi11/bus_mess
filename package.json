@@ -1,0 +1,42 @@
+{
+  "name": "bus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "find:route": "tsx src/scripts/verify-route-search.ts",
+    "verify:reride": "tsx src/scripts/verify-arrival-reride.ts",
+    "verify:station-reride": "tsx src/scripts/verify-station-reride.ts",
+    "collect": "tsx src/scripts/collect-sample.ts",
+    "verify:station": "tsx src/scripts/verify-station-master.ts",
+    "verify:position": "tsx src/scripts/verify-bus-position.ts",
+    "verify:passenger": "tsx src/scripts/verify-passenger-count.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hihhi11/bus_mess.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hihhi11/bus_mess/issues"
+  },
+  "homepage": "https://github.com/hihhi11/bus_mess#readme",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "dotenv": "^18.0.1",
+    "express": "^5.2.1",
+    "fast-xml-parser": "^5.11.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
