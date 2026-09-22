@@ -19,6 +19,26 @@ interface StationConfig {
   stations: { arsId: string; name: string }[];
 }
 
+/**
+ * 수집 허용 시간대(KST): 07:00~12:00, 16:00~19:00.
+ * cron이 정확한 시각에 맞춰 트리거되지 않을 수 있어 스크립트 레벨에서도 다시 확인한다.
+ */
+function isWithinCollectionWindow(date: Date): boolean {
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Seoul",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  });
+  const parts = fmt.formatToParts(date);
+  const hour = Number(parts.find((p) => p.type === "hour")?.value);
+  const minute = Number(parts.find((p) => p.type === "minute")?.value);
+
+  const inMorning = hour >= 7 && (hour < 12 || (hour === 12 && minute === 0));
+  const inEvening = hour >= 16 && (hour < 19 || (hour === 19 && minute === 0));
+  return inMorning || inEvening;
+}
+
 async function collectStation(arsId: string, name: string, busRouteAbrv: string) {
   const { parsed } = await fetchPublicApi(BASE_URL, {
     serviceKey: env.serviceKey,
@@ -52,6 +72,12 @@ async function collectStation(arsId: string, name: string, busRouteAbrv: string)
 }
 
 async function main() {
+  const now = new Date();
+  if (!isWithinCollectionWindow(now)) {
+    console.log(`[SKIP] 수집 시간대 아님 (07-12시, 16-19시만 수집) — ${now.toISOString()}`);
+    return;
+  }
+
   const config: StationConfig = JSON.parse(fs.readFileSync(CONFIG_PATH, "utf-8"));
   const lines: string[] = [];
 
