@@ -648,3 +648,10 @@
 {"collected_at":"2026-10-31T01:25:58.301Z","arsId":"01134","stationName":"세검정.상명대","found":true,"arrmsg1":"3분후[3번째 전]","arrmsg2":"11분후[6번째 전]","congestion1":3,"congestion2":3,"rerdieDiv1":4,"rerdieDiv2":4,"rerideNum1":12,"rerideNum2":13,"vehId1":108018304,"vehId2":108018098}
 {"collected_at":"2026-10-31T01:25:58.457Z","arsId":"01143","stationName":"세검정.세검정성당","found":true,"arrmsg1":"8분후[4번째 전]","arrmsg2":"12분후[5번째 전]","congestion1":3,"congestion2":3,"rerdieDiv1":4,"rerdieDiv2":4,"rerideNum1":8,"rerideNum2":4,"vehId1":108018332,"vehId2":108018089}
 {"collected_at":"2026-10-31T01:25:58.773Z","arsId":"09004","stationName":"수유역.강북구청","found":true,"arrmsg1":"곧 도착","arrmsg2":"11분후[4번째 전]","congestion1":3,"congestion2":3,"rerdieDiv1":4,"rerdieDiv2":4,"rerideNum1":14,"rerideNum2":13,"vehId1":108018240,"vehId2":108057636}
+{"collected_at":"2026-10-31T07:22:39.089Z","arsId":"19306","stationName":"대방역7번출구","error":"timeout of 10000ms exceeded"}
+{"collected_at":"2026-10-31T07:22:49.096Z","arsId":"08120","stationName":"숭덕초교","error":"timeout of 10000ms exceeded"}
+{"collected_at":"2026-10-31T07:22:59.101Z","arsId":"08114","stationName":"고려대사범대학부속고등학교","error":"timeout of 10000ms exceeded"}
+{"collected_at":"2026-10-31T07:23:09.107Z","arsId":"09013","stationName":"수유역.강북구청","error":"timeout of 10000ms exceeded"}
+{"collected_at":"2026-10-31T07:23:19.114Z","arsId":"01134","stationName":"세검정.상명대","error":"timeout of 10000ms exceeded"}
+{"collected_at":"2026-10-31T07:23:29.121Z","arsId":"01143","stationName":"세검정.세검정성당","error":"timeout of 10000ms exceeded"}
+{"collected_at":"2026-10-31T07:23:39.127Z","arsId":"09004","stationName":"수유역.강북구청","error":"timeout of 10000ms exceeded"}
